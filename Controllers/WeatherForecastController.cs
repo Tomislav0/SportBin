@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SportBin.Data;
+using SportBin.Models.Definitions;
 
 namespace SportBin.Controllers
 {
@@ -12,10 +15,11 @@ namespace SportBin.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        private readonly DataContext _ctx;
+        public WeatherForecastController(DataContext ctx, ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
+            _ctx = ctx;
         }
 
         [HttpGet]
@@ -28,6 +32,12 @@ namespace SportBin.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("admin")]
+        public async Task<ActionResult<List<User>>> GetAdmin()
+        {
+            return Ok(await _ctx.User.ToListAsync());
         }
     }
 }
