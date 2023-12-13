@@ -5,9 +5,9 @@ namespace SportBin.Models.Definitions
 {
     public class BaseEntity
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
     }
 }

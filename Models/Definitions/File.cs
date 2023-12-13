@@ -7,6 +7,6 @@ namespace SportBin.Models.Definitions
         public string Url { get; set; } = "";
         public Guid EventId { get; set; }
         [ForeignKey("EventId")]
-        public virtual Event Event { get; set; }
+        public virtual Event? Event { get; set; }
     }
 }

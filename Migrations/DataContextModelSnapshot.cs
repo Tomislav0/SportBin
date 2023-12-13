@@ -115,6 +115,10 @@ namespace SportBin.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -131,7 +135,7 @@ namespace SportBin.Migrations
             modelBuilder.Entity("SportBin.Models.Definitions.EventCategory", b =>
                 {
                     b.HasOne("SportBin.Models.Definitions.Category", "Category")
-                        .WithMany()
+                        .WithMany("EventCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -156,6 +160,11 @@ namespace SportBin.Migrations
                         .IsRequired();
 
                     b.Navigation("Event");
+                });
+
+            modelBuilder.Entity("SportBin.Models.Definitions.Category", b =>
+                {
+                    b.Navigation("EventCategories");
                 });
 
             modelBuilder.Entity("SportBin.Models.Definitions.Event", b =>

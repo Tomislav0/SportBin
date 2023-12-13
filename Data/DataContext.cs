@@ -8,34 +8,18 @@ namespace SportBin.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-            
+
         }
-        public DbSet<User> User => Set<User>();
-        public DbSet<Models.Definitions.File> File => Set<Models.Definitions.File>();
-        public DbSet<Category> Category => Set<Category>();
-        public DbSet<Event> Event => Set<Event>();
-        public DbSet<EventCategory> EventCategory => Set<EventCategory>();
+        public DbSet<User> User { get; set; }
+        public DbSet<Models.Definitions.File> File { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<Event> Event { get; set; }
+        public DbSet<EventCategory> EventCategory { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<Event>()
-               .HasMany(dm => dm.Photos)
-               .WithOne(dm => dm.Event)
-               .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Models.Definitions.File>()
-               .HasOne(dm => dm.Event)
-               .WithMany(dm => dm.Photos)
-               .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Models.Definitions.File>()
-              .HasOne(dm => dm.Event)
-              .WithMany(dm => dm.Photos)
-              .OnDelete(DeleteBehavior.Cascade);
-
         }
 
     }

@@ -13,12 +13,10 @@ namespace SportBin.Controllers
     public class EventController : ControllerBase
     {
        
-        private readonly ILogger<WeatherForecastController> _logger;
         private readonly DataContext _ctx;
         private readonly EventService _eventService;
-        public EventController(DataContext ctx, ILogger<WeatherForecastController> logger, EventService eventService)
+        public EventController(DataContext ctx, EventService eventService)
         {
-            _logger = logger;
             _ctx = ctx;
             _eventService = eventService;
         }

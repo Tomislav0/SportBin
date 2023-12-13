@@ -1,7 +1,7 @@
 ﻿
 namespace SportBin.Models.DTO
 {
-    public class EventDTO
+    public class EventDTO : BaseDTO
     {
         public string TeamOneName { get; set; }
         public string TeamTwoName { get; set; }

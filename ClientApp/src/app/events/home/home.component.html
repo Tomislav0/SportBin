@@ -1,0 +1,24 @@
+<h1 id="tableLabel">Events</h1>
+
+<p>This Test</p>
+
+<p *ngIf="!events?.length"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="events.length">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Team 1:</th>
+      <th>Team 2:</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let event of events">
+      <td>{{ event.id }}</td>
+      <td>{{ event.teamOneName }}</td>
+      <td>{{ event.teamTwoName }}</td>
+      <td>{{ event.teamOneScore + ' : ' +event.teamTwoScore }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -7,13 +7,12 @@ namespace SportBin.Models.Definitions
 {
     public class EventCategory : BaseEntity
     {
-
         public Guid EventId { get; set; }
         public Guid CategoryId { get; set; }
         [ForeignKey("EventId")]
-        public Event Event { get; set; }
+        public virtual Event? Event { get; set; }
 
         [ForeignKey("CategoryId")]
-        public Category Category { get; set; }
+        public virtual Category? Category { get; set; }
     }
 }
