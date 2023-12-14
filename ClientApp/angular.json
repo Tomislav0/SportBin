@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "SportBin"
+  "defaultProject": "SportBin",
+  "cli": {
+    "analytics": false
+  }
 }
