@@ -1,14 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import {
-  SharedModule,
-  FooterComponent,
-  HeaderComponent,
-} from './shared';
+import { SharedModule, FooterComponent, HeaderComponent } from './shared';
+import { HeadersInterceptor } from './helpers/headers.interceptor';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -17,9 +14,15 @@ import {
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeadersInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

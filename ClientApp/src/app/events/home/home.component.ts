@@ -11,7 +11,6 @@ export class HomeComponent {
   constructor(public eventService: EventService) {
     this.eventService.getAllEvents().subscribe(
       (result) => {
-        console.log(result);
         this.events = result;
       },
       (error) => console.error(error)

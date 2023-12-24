@@ -1,0 +1,18 @@
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  constructor(
+    public http: HttpClient,
+    @Inject('BASE_URL') public baseUrl: string
+  ) {}
+  public authorizedSubject = new Subject<boolean>();
+
+  public login(data: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + 'account/login', data);
+  }
+}

@@ -63,5 +63,6 @@ app.MapControllerRoute(
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html");
+app.UseAuthorization();
 
 app.Run();
