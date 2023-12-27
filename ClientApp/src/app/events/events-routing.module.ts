@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
-import { DetailsPageComponent } from "./details-page/details-page.component copy";
+import { DetailsPageComponent } from "./details-page/details-page.component";
 
 const routes: Routes = [
 	{ path: "", component: HomeComponent, pathMatch: "full" },
