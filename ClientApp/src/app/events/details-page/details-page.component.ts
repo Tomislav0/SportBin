@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { AuthGuard } from "src/app/helpers/auth.guard";
 import { EventDTO } from "src/app/models";
 import { EventService } from "src/app/services/event.service";
 
@@ -11,7 +12,8 @@ import { EventService } from "src/app/services/event.service";
 export class DetailsPageComponent implements OnInit {
 	constructor(
 		public eventService: EventService,
-		public route: ActivatedRoute
+		public route: ActivatedRoute,
+		public authGuard: AuthGuard
 	) {}
 	public event: EventDTO | undefined;
 	public isAdmin: boolean = false;
@@ -29,7 +31,7 @@ export class DetailsPageComponent implements OnInit {
 				(error) => console.error(error)
 			);
 		});
-		this.isAdmin = localStorage.getItem("auth_token") !== null;
+		this.isAdmin = this.authGuard.isAdmin();
 	}
 
 	public getTitleOfMatch() {
