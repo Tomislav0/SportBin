@@ -1,0 +1,29 @@
+.new-event-input {
+	border: 1px solid black;
+	border-radius: 12px;
+}
+
+.form-body > div {
+	margin: 1rem
+}
+
+.form-body input,
+.form-body textarea {
+    border-radius: 6px;
+	border-width: 0.5px;
+}
+
+.textarea-input {
+	width: 80%;
+}
+
+.textarea-item {
+	text-wrap: nowrap;
+}
+
+.devider {
+	opacity: 1;
+}
+.file-input {
+    border-radius: 0px !important;
+}
