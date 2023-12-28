@@ -1,1 +1,10 @@
-<p>Ovu stranicu vidi samo admin!</p>
+<admin-header (tabChangeDetected)="onTabChange($event)"> </admin-header>
+<div *ngIf="currentTab === 'tab1'">
+	<!-- Ovdje komponenta za uredivanje evenata -->
+</div>
+<div *ngIf="currentTab === 'tab2'">
+	<!-- Ovdje komponenta za unos novog eventa -->
+</div>
+<div *ngIf="currentTab === 'tab3'">
+	<!-- Ovdje komponenta za konfiguraciju profila -->
+</div>

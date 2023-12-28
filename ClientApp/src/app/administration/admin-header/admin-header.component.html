@@ -1,0 +1,26 @@
+<div
+	class="btn-group btn-group-toggle d-flex justify-content-center"
+	data-toggle="buttons"
+>
+	<label
+		class="btn btn-secondary"
+		[ngClass]="{ active: currentTab === 'tab1' }"
+		(click)="changeTab('tab1')"
+	>
+		Dogadaji
+	</label>
+	<label
+		class="btn btn-secondary"
+		[ngClass]="{ active: currentTab === 'tab2' }"
+		(click)="changeTab('tab2')"
+	>
+		Novi Dogadaj
+	</label>
+	<label
+		class="btn btn-secondary"
+		[ngClass]="{ active: currentTab === 'tab3' }"
+		(click)="changeTab('tab3')"
+	>
+		Konfiguracija
+	</label>
+</div>
