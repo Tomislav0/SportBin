@@ -1,20 +1,25 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
-import { EventService } from 'src/app/services/event.service';
+import { HttpClient } from "@angular/common/http";
+import { Component, Inject } from "@angular/core";
+import { Router } from "@angular/router";
+import { EventDTO } from "src/app/models";
+import { EventService } from "src/app/services/event.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
+	selector: "app-home",
+	templateUrl: "./home.component.html",
 })
 export class HomeComponent {
-  public events: any[] = [];
-  constructor(public eventService: EventService) {
-    this.eventService.getAllEvents().subscribe(
-      (result) => {
-        console.log(result);
-        this.events = result;
-      },
-      (error) => console.error(error)
-    );
-  }
+	public events: EventDTO[] = [];
+	constructor(public eventService: EventService, public router: Router) {
+		this.eventService.getAllEvents().subscribe(
+			(result) => {
+				this.events = result;
+			},
+			(error) => console.error(error)
+		);
+	}
+
+	public onEventClicked(event: EventDTO) {
+		this.router.navigate([`details/${event.id}`]);
+	}
 }

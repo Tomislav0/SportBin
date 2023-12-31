@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportBin.Data;
 using SportBin.Models.BM;
@@ -21,12 +22,13 @@ namespace SportBin.Controllers
             _eventService = eventService;
         }
 
-        [HttpPost("")]
-        public async Task<ActionResult<EventBM>> CreateEvent([FromBody]EventBM model)
+        [HttpGet("list")]
+        public async Task<ActionResult<List<EventDTO>>> GetAllEvents()
         {
-            var result = await _eventService.CreateEvent(model);
+            var result = await _eventService.GetAllEvents();
             return Ok(result);
         }
+
 
         [HttpGet("{eventId}")]
         public async Task<ActionResult<EventDTO>> GetEvent([FromRoute] Guid eventId)
@@ -35,12 +37,12 @@ namespace SportBin.Controllers
             return Ok(result);
         }
 
-        [HttpGet("list")]
-        public async Task<ActionResult<List<EventDTO>>> GetAllEvents()
+        [Authorize]
+        [HttpPost("")]
+        public async Task<ActionResult<EventBM>> CreateEvent([FromBody]EventBM model)
         {
-            var result = await _eventService.GetAllEvents();
+            var result = await _eventService.CreateEvent(model);
             return Ok(result);
-        }
-        
+        }        
     }
 }
