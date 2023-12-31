@@ -1,10 +1,12 @@
-<h1 id="tableLabel">Events</h1>
-
-<p>This Test</p>
+<h1 class="">Istaknuti događaji</h1>
 
 <p *ngIf="!events?.length"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="events.length">
+<table
+  class="table table-striped"
+  aria-labelledby="tableLabel"
+  *ngIf="events.length"
+>
   <thead>
     <tr>
       <th>Id</th>
@@ -18,7 +20,52 @@
       <td>{{ event.id }}</td>
       <td>{{ event.teamOneName }}</td>
       <td>{{ event.teamTwoName }}</td>
-      <td>{{ event.teamOneScore + ' : ' +event.teamTwoScore }}</td>
+      <td>{{ event.teamOneScore + " : " + event.teamTwoScore }}</td>
     </tr>
   </tbody>
 </table>
+
+<div
+  class="d-flex justify-content-center align-items-center gap-3"
+  style="padding: 0px 32px; width: 100%"
+>
+  <div class="card-large w-50">
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="cards-small w-50 d-flex flex-column gap-3">
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1 class="">Svi događaji</h1>
