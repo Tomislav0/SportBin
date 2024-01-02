@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule, FooterComponent, HeaderComponent } from './shared';
 import { HeadersInterceptor } from './helpers/headers.interceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -15,6 +16,7 @@ import { HeadersInterceptor } from './helpers/headers.interceptor';
     HttpClientModule,
     FormsModule,
     SharedModule,
+    NgbModule,
   ],
   providers: [
     {

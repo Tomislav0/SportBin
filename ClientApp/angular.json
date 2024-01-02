@@ -23,18 +23,17 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "allowedCommonJsDependencies": [
-              "oidc-client"
-            ],
-            "assets": [
-              "src/assets"
-            ],
+            "allowedCommonJsDependencies": ["oidc-client"],
+            "assets": ["src/assets"],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -95,12 +94,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         },
