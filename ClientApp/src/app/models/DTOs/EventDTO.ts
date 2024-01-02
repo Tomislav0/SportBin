@@ -1,4 +1,4 @@
-export class EventDTO {
+export class EventDTO implements IEventDTO {
 	id: string;
 	teamOneName: string;
 	teamTwoName: string;
@@ -33,4 +33,30 @@ export class EventDTO {
 		this.photoUrls = photoUrls;
 		this.categoryNames = categoryNames;
 	}
+}
+
+export interface IEventDTO {
+	id?: string;
+	teamOneName?: string;
+	teamTwoName?: string;
+	teamOneScore?: number;
+	teamTwoScore?: number;
+	shortDescription?: string;
+	description?: string;
+	date?: Date;
+	photoUrls?: string[];
+	categoryIds?: string[];
+	categoryNames?: string[];
+}
+
+export interface IEventCategoryDTO {
+	eventId: string;
+	categoryId: string;
+	event: IEventDTO;
+	category: ICategoryDTO;
+}
+
+export interface ICategoryDTO {
+	name: string;
+	categoryId: string;
 }

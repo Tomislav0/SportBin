@@ -8,7 +8,7 @@ import { Component, EventEmitter, Output } from "@angular/core";
 export class AdminHeaderComponent {
 	@Output() tabChangeDetected = new EventEmitter<AdminTabName>();
 
-	public currentTab: AdminTabName = AdminTabName.EventsTab;
+	public currentTab: AdminTabName = AdminTabName.NewEventTab;
 
 	public changeTab(tab: string) {
 		this.currentTab = tab;

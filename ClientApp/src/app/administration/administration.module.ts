@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { CommonModule, DatePipe } from "@angular/common";
 
 import { AdministrationRoutingModule } from "./administration-routing.module";
 import { LoginComponent } from "./login/login.component";
@@ -16,5 +16,6 @@ import { AdminNewEventComponent } from "./admin-new-event";
 		AdminNewEventComponent,
 	],
 	imports: [CommonModule, AdministrationRoutingModule, SharedModule],
+	providers: [DatePipe],
 })
 export class AdministrationModule {}

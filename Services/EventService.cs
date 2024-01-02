@@ -18,8 +18,14 @@ namespace SportBin.Services
             //TODO: wrap in transaction
             var newEvent = model.Adapt<Event>();
             newEvent.Id = Guid.NewGuid();
+            //TODO: implement file saving
             var files = model.PhotoUrls.Select(url => new Models.Definitions.File() { Url = url, EventId = newEvent.Id });
-            var eventCategories = model.CategoryIds.Select(c => new EventCategory() { EventId = newEvent.Id, CategoryId = c });
+            var eventCategories = model.CategoryIds.Select(c =>
+            {
+                var eventCategoryId = Guid.NewGuid();
+                return new EventCategory() { EventId = newEvent.Id, Id = eventCategoryId, CategoryId = c };
+            });
+            newEvent.EventCategories = eventCategories.ToList();
             await _ctx.Event.AddAsync(newEvent);
             await _ctx.File.AddRangeAsync(files);
             await _ctx.EventCategory.AddRangeAsync(eventCategories);

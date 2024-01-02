@@ -7,7 +7,7 @@ import { AdminTabName } from "../admin-header";
 	styleUrls: ["./admin-page.component.css"],
 })
 export class AdminPageComponent {
-	public currentTab: AdminTabName = AdminTabName.EventsTab;
+	public currentTab: AdminTabName = AdminTabName.NewEventTab;
 	public onTabChange(tab: AdminTabName) {
 		this.currentTab = tab;
 	}
