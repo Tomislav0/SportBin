@@ -1,0 +1,7 @@
+<input type="file" (change)="imageSelected($event)">
+<ng-container *ngIf="pictureUrls.length">
+    <div *ngFor="let pictureUrl of pictureUrls">
+
+        <img [src]="pictureUrl">
+    </div>
+</ng-container>
