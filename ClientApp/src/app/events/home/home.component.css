@@ -1,0 +1,17 @@
+.selected-events,
+.all-events {
+  margin-bottom: 1.875rem;
+}
+
+.home-title {
+  color: var(--Gray-900, #101828);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  margin-bottom: 30px;
+}
+
+.container {
+  max-width: 70rem;
+}

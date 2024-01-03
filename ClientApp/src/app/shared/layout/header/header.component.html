@@ -1,13 +1,25 @@
 <header>
-  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3"
+  >
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">SportBin</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" [ngClass]="{ show: isExpanded }">
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex justify-content-between"
+        [ngClass]="{ show: isExpanded }"
+      >
         <ul class="navbar-nav flex-grow">
           <li class="nav-item pointer" [routerLinkActive]="['link-active']">
             <a class="nav-link text-light">Istaknuto</a>
@@ -15,34 +27,64 @@
           <li class="nav-item pointer" [routerLinkActive]="['link-active']">
             <a class="nav-link text-light">Događaji</a>
           </li>
-          <li class="nav-item pointer dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
+          <li ngbDropdown class="nav-item pointer dropdown">
+            <a
+              ngbDropdownToggle
+              class="nav-link dropdown-toggle"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Kategorije
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Nogomet</a>
-              <a class="dropdown-item" href="#">Tenis</a>
-              <a class="dropdown-item" href="#">Rukomet</a>
-              <a class="dropdown-item" href="#">Košarka</a>
+            <div
+              ngbDropdownMenu
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdown"
+            >
+              <a ngbDropdownItem class="dropdown-item" href="#">Nogomet</a>
+              <a ngbDropdownItem class="dropdown-item" href="#">Tenis</a>
+              <a ngbDropdownItem class="dropdown-item" href="#">Rukomet</a>
+              <a ngbDropdownItem class="dropdown-item" href="#">Košarka</a>
             </div>
           </li>
         </ul>
 
         <ul class="navbar-nav flex-grow" *ngIf="!isLoginPage">
-          <li *ngIf="isAuthorized" class="nav-item pointer me-2" routerLink="admin">
+          <li
+            *ngIf="isAuthorized"
+            class="nav-item pointer me-2"
+            routerLink="admin"
+          >
             <a class="nav-link text-light">Admin</a>
           </li>
-          <li class="nav-item pointer me-2" [routerLinkActive]="['link-active']">
+          <li
+            class="nav-item pointer me-2"
+            [routerLinkActive]="['link-active']"
+          >
             <form class="form-inline my-2 my-lg-0 d-inline-flex gap-2">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-              <i class="bi bi-search align-self-center" style="color: wheat;"></i>
+              <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <i
+                class="bi bi-search align-self-center"
+                style="color: wheat"
+              ></i>
             </form>
           </li>
           <li *ngIf="!isAuthorized" class="nav-item pointer ms-2">
             <a class="nav-link text-light" routerLink="admin/login">Login</a>
           </li>
-          <li *ngIf="isAuthorized" class="nav-item pointer ms-2" (click)="logout()">
+          <li
+            *ngIf="isAuthorized"
+            class="nav-item pointer ms-2"
+            (click)="logout()"
+          >
             <a class="nav-link text-light">Log out</a>
           </li>
         </ul>

@@ -1,0 +1,73 @@
+.teams-footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+}
+
+.teams-footer__category {
+  color: var(--Primary-700, #6941c6);
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  border-radius: 16px;
+  background: var(--Primary-50, #f9f5ff);
+  padding: 2px 10px;
+}
+
+.teams-footer__team-one {
+  color: var(--Indigo-700, #3538cd);
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  border-radius: 16px;
+  background: var(--Indigo-50, #eef4ff);
+  padding: 2px 10px;
+}
+
+.teams-footer__team-two {
+  color: var(--Pink-700, #c11574);
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  border-radius: 16px;
+  background: var(--Pink-50, #fdf2fa);
+  padding: 2px 10px;
+}
+
+.card img {
+  cursor: pointer;
+}
+
+.card-title {
+  cursor: pointer;
+}
+
+.card-text,
+.card-date {
+  color: var(--Gray-500, #667085);
+}
+
+.score a {
+  float: inline-end;
+}
+
+.score p {
+  color: var(--Body-Text-Base-Color, #68717a);
+}
+
+.score a svg {
+  cursor: pointer;
+}
+
+.blackout {
+  background-color: #42464a;
+  margin-right: 30px;
+}

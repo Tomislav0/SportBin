@@ -60,15 +60,35 @@ namespace SportBin.Services
             return existingEvent.Adapt<EventDTO>();
         }
 
-    }
 
-    public async Task<EventDTO> GetEventById(Guid EventId)
-    {
-        return await _ctx.Event
+        public async Task<EventDTO> GetEventById(Guid EventId)
+        {
+            return await _ctx.Event
+                    .Include(e => e.EventCategories)
+                    .ThenInclude(e => e.Category)
+                    .Include(e => e.Photos)
+                    .Where(e => e.Id == EventId)
+                    .Select(e => new EventDTO()
+                    {
+                        Id = e.Id,
+                        TeamOneName = e.TeamOneName,
+                        TeamTwoName = e.TeamTwoName,
+                        TeamOneScore = e.TeamOneScore,
+                        TeamTwoScore = e.TeamTwoScore,
+                        CategoryNames = e.EventCategories.Select(s => s.Category.Name).ToList(),
+                        PhotoUrls = e.Photos.Select(p => p.Url).ToList(),
+                        ShortDescription = e.ShortDescription,
+                        Description = e.Description,
+                        Date = e.Date
+                    })
+                    .FirstOrDefaultAsync();
+        }
+
+        public async Task<List<EventDTO>> GetAllEvents()
+        {
+            return await _ctx.Event.Include(e => e.Photos)
                 .Include(e => e.EventCategories)
                 .ThenInclude(e => e.Category)
-                .Include(e => e.Photos)
-                .Where(e => e.Id == EventId)
                 .Select(e => new EventDTO()
                 {
                     Id = e.Id,
@@ -82,28 +102,7 @@ namespace SportBin.Services
                     Description = e.Description,
                     Date = e.Date
                 })
-                .FirstOrDefaultAsync();
+                .ToListAsync();
+        }
     }
-
-    public async Task<List<EventDTO>> GetAllEvents()
-    {
-        return await _ctx.Event.Include(e => e.Photos)
-            .Include(e => e.EventCategories)
-            .ThenInclude(e => e.Category)
-            .Select(e => new EventDTO()
-            {
-                Id = e.Id,
-                TeamOneName = e.TeamOneName,
-                TeamTwoName = e.TeamTwoName,
-                TeamOneScore = e.TeamOneScore,
-                TeamTwoScore = e.TeamTwoScore,
-                CategoryNames = e.EventCategories.Select(s => s.Category.Name).ToList(),
-                PhotoUrls = e.Photos.Select(p => p.Url).ToList(),
-                ShortDescription = e.ShortDescription,
-                Description = e.Description,
-                Date = e.Date
-            })
-            .ToListAsync();
-    }
-}
 }
