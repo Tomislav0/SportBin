@@ -15,4 +15,12 @@ export class AuthService {
   public login(data: any): Observable<any> {
     return this.http.post<any>(this.baseUrl + 'account/login', data);
   }
+
+  public register(data: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + 'account/register', data);
+  }
+
+  public getAllUsers(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + 'admin/list');
+  }
 }

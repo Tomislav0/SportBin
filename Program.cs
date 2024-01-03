@@ -28,6 +28,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 
 builder.Services.AddScoped<EventService>();
+builder.Services.AddScoped<AdminService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
