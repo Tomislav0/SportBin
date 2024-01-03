@@ -1,5 +1,4 @@
 ﻿using Mapster;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportBin.Data;
 using SportBin.Models.BM;
@@ -40,8 +39,51 @@ namespace SportBin.Services
                 return null;
 
             }
-;
         }
+
+        public async Task<EventDTO> UpdateEvent(EventBM model)
+        {
+            var existingEvent = await _ctx.Event.FirstOrDefaultAsync(e => e.Id == model.Id);
+            if (existingEvent == null)
+            {
+                return null;
+            }
+            existingEvent.TeamOneName = model.TeamOneName;
+            existingEvent.TeamTwoName = model.TeamTwoName;
+            existingEvent.TeamOneScore = model.TeamOneScore;
+            existingEvent.TeamTwoScore = model.TeamTwoScore;
+            existingEvent.ShortDescription = model.ShortDescription;
+            existingEvent.Description = model.Description;
+            existingEvent.Date = model.Date;
+
+            await _ctx.File.Where(f => f.EventId == existingEvent.Id).ExecuteDeleteAsync();
+            await _ctx.EventCategory.Where(f => f.EventId == existingEvent.Id).ExecuteDeleteAsync();
+
+
+            var files = model.PhotoUrls.Select(url => new Models.Definitions.File() { Url = url, EventId = existingEvent.Id });
+            var eventCategories = model.CategoryIds.Select(c => new EventCategory() { EventId = existingEvent.Id, CategoryId = c });
+
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    await _ctx.File.AddRangeAsync(files);
+                    await _ctx.EventCategory.AddRangeAsync(eventCategories);
+
+                    await _ctx.SaveChangesAsync();
+
+                    scope.Complete();
+                    return existingEvent.Adapt<EventDTO>();
+                }
+
+            }
+            catch (TransactionAbortedException ex)
+            {
+                return null;
+
+            }
+        }
+
         public async Task<EventDTO> GetEventById(Guid EventId)
         {
             return await _ctx.Event.Where(e => e.Id == EventId).ProjectToType<EventDTO>().FirstOrDefaultAsync();
