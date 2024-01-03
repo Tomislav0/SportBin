@@ -1,22 +1,39 @@
-import { HttpClient } from "@angular/common/http";
-import { Inject, Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { EventDTO } from "../models/DTOs/EventDTO";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { EventDTO, ICategoryDTO, IEventDTO } from '../models/DTOs/EventDTO';
 
 @Injectable({
-	providedIn: "root",
+  providedIn: 'root',
 })
 export class EventService {
-	constructor(
-		public http: HttpClient,
-		@Inject("BASE_URL") public baseUrl: string
-	) {}
+  constructor(
+    public http: HttpClient,
+    @Inject('BASE_URL') public baseUrl: string
+  ) {}
 
-	public getAllEvents(): Observable<EventDTO[]> {
-		return this.http.get<EventDTO[]>(this.baseUrl + "event/list");
-	}
+  public getAllEvents(): Observable<EventDTO[]> {
+    return this.http.get<EventDTO[]>(this.baseUrl + 'event/list');
+  }
 
-	public getEventById(eventId: string): Observable<EventDTO> {
-		return this.http.get<EventDTO>(this.baseUrl + `event/${eventId}`);
-	}
+  public getEventById(eventId: string): Observable<EventDTO> {
+    return this.http.get<EventDTO>(this.baseUrl + `event/${eventId}`);
+  }
+
+  public postEvent(newEvent: IEventDTO) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    return this.http.post<EventDTO>(
+      this.baseUrl + `event`,
+      newEvent,
+      httpOptions
+    );
+  }
+
+  public getEventCategories(): Observable<ICategoryDTO[]> {
+    return this.http.get<any>(this.baseUrl + 'admin/categories');
+  }
 }

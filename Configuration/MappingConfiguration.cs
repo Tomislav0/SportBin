@@ -10,9 +10,9 @@ namespace SportBin.Configuration
         {
             config.NewConfig<Event, EventDTO>()
                 .Map(dest => dest.PhotoUrls,
-                src => src.Photos.Select(p => p.Url).ToList())
+                src => src.Photos.Select(p => p.Url))
                 .Map(dest => dest.CategoryNames,
-                src => src.EventCategories.Select(e=>e.Category.Name).ToList());
+                src => src.EventCategories.Select(e=>e.Category.Name));
 
         }
     }
