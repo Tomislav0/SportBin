@@ -1,41 +1,24 @@
-<div>
-  <h1 class="" style="font-size: 2vw">Svi događaji</h1>
-
+<div class="selected-events">
+  <h1 class="home-title">Istaknuti događaji</h1>
   <p *ngIf="!events?.length"><em>Loading...</em></p>
-
-  <table
-    class="table table-striped"
-    aria-labelledby="tableLabel"
-    *ngIf="events.length"
+  <div
+    class="d-flex align-items-center justify-content-center flex-row-reverse gap-3"
   >
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Team 1:</th>
-        <th>Team 2:</th>
-        <th>Score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let event of events">
-        <td>{{ event.id }}</td>
-        <td>{{ event.teamOneName }}</td>
-        <td>{{ event.teamTwoName }}</td>
-        <td>{{ event.teamOneScore + " : " + event.teamTwoScore }}</td>
-      </tr>
-    </tbody>
-  </table>
+    <div *ngFor="let event of events; let i = index">
+      <div *ngIf="i >= events.length - 3">
+        <app-event-card [event]="event"></app-event-card>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <div>
-    <div class="card" style="width: 18rem">
-      <img class="card-img-top" src="..." alt="Card image cap" />
-      <div class="card-body">
-        <h5 class="card-title">title</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="all-events">
+  <h1 class="home-title">Svi događaji</h1>
+  <p *ngIf="!events?.length"><em>Loading...</em></p>
+  <div class="container">
+    <div class="row gy-2">
+      <div class="col-4" *ngFor="let event of events">
+        <app-event-card [event]="event"></app-event-card>
       </div>
     </div>
   </div>

@@ -6,6 +6,7 @@ import { EventService } from 'src/app/services/event.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
   public events: EventDTO[] = [];
@@ -16,9 +17,5 @@ export class HomeComponent {
       },
       (error) => console.error(error)
     );
-  }
-
-  public onEventClicked(event: EventDTO) {
-    this.router.navigate([`details/${event.id}`]);
   }
 }
