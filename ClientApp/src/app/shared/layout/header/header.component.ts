@@ -41,7 +41,6 @@ export class HeaderComponent {
     localStorage.removeItem('auth_token');
     this.isAuthorized = false;
     this.authService.authorizedSubject.next(false);
-    this.router.navigateByUrl('');
     window.location.reload();
   }
 }

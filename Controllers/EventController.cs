@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using SportBin.Data;
 using SportBin.Models.BM;
-using SportBin.Models.Definitions;
 using SportBin.Models.DTO;
 using SportBin.Services;
 
@@ -13,7 +11,7 @@ namespace SportBin.Controllers
     [Route("[controller]")]
     public class EventController : ControllerBase
     {
-       
+
         private readonly DataContext _ctx;
         private readonly EventService _eventService;
         public EventController(DataContext ctx, EventService eventService)
@@ -39,10 +37,10 @@ namespace SportBin.Controllers
 
         [Authorize]
         [HttpPost("")]
-        public async Task<ActionResult<EventBM>> CreateEvent([FromBody]EventBM model)
+        public async Task<ActionResult<EventBM>> CreateEvent([FromBody] EventBM model)
         {
             var result = await _eventService.CreateEvent(model);
             return Ok(result);
-        }        
+        }
     }
 }
