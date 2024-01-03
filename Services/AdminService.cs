@@ -16,6 +16,12 @@ namespace SportBin.Services
                 .ProjectToType<UserDTO>()
                 .ToListAsync();
         }
+        public async Task<List<CategoryDTO>> GetAllCategories()
+        {
+            return await _ctx.Category
+                .ProjectToType<CategoryDTO>()
+                .ToListAsync();
+        }
 
     }
 }

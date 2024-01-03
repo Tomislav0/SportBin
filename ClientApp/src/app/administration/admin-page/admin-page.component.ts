@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { AdminTabName } from "../admin-header";
 
 @Component({
-  selector: 'app-admin-page',
-  templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.css']
+	selector: "app-admin-page",
+	templateUrl: "./admin-page.component.html",
+	styleUrls: ["./admin-page.component.css"],
 })
 export class AdminPageComponent {
-
+	public currentTab: AdminTabName = AdminTabName.NewEventTab;
+	public onTabChange(tab: AdminTabName) {
+		this.currentTab = tab;
+	}
 }

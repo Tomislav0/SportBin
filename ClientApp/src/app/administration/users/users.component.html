@@ -1,5 +1,6 @@
-<div class="d-flex justify-content-center mt-5">
+<div class="d-flex justify-content-center mt-5 ">
     <form [formGroup]="userFrom">
+        <h4>Dodaj novog korisnika</h4>
         <div class="form-group">
             <label for="exampleInputEmail1">Email adresa</label>
             <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
@@ -15,7 +16,7 @@
         </div>
     </form>
 </div>
-
+<h2 class="mt-2">Svi korisnici (Administratori)</h2>
 <p *ngIf="!allUsers?.length"><em>Loading...</em></p>
 
 <table class="table table-striped" aria-labelledby="tableLabel" *ngIf="allUsers.length">

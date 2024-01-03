@@ -4,7 +4,6 @@ using SportBin.Data;
 using SportBin.Models.BM;
 using SportBin.Models.Definitions;
 using SportBin.Models.DTO;
-using System.Transactions;
 
 namespace SportBin.Services
 {
@@ -19,26 +18,16 @@ namespace SportBin.Services
             newEvent.Id = Guid.NewGuid();
             var files = model.PhotoUrls.Select(url => new Models.Definitions.File() { Url = url, EventId = newEvent.Id });
             var eventCategories = model.CategoryIds.Select(c => new EventCategory() { EventId = newEvent.Id, CategoryId = c });
-            try
-            {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    await _ctx.Event.AddAsync(newEvent);
-                    await _ctx.File.AddRangeAsync(files);
-                    await _ctx.EventCategory.AddRangeAsync(eventCategories);
 
-                    await _ctx.SaveChangesAsync();
+            newEvent.EventCategories = eventCategories.ToList();
+            await _ctx.Event.AddAsync(newEvent);
+            await _ctx.File.AddRangeAsync(files);
+            await _ctx.EventCategory.AddRangeAsync(eventCategories);
 
-                    scope.Complete();
-                    return newEvent.Adapt<EventDTO>();
-                }
+            await _ctx.SaveChangesAsync();
 
-            }
-            catch (TransactionAbortedException ex)
-            {
-                return null;
+            return newEvent.Adapt<EventDTO>();
 
-            }
         }
 
         public async Task<EventDTO> UpdateEvent(EventBM model)
@@ -63,39 +52,58 @@ namespace SportBin.Services
             var files = model.PhotoUrls.Select(url => new Models.Definitions.File() { Url = url, EventId = existingEvent.Id });
             var eventCategories = model.CategoryIds.Select(c => new EventCategory() { EventId = existingEvent.Id, CategoryId = c });
 
-            try
-            {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    await _ctx.File.AddRangeAsync(files);
-                    await _ctx.EventCategory.AddRangeAsync(eventCategories);
+            await _ctx.File.AddRangeAsync(files);
+            await _ctx.EventCategory.AddRangeAsync(eventCategories);
 
-                    await _ctx.SaveChangesAsync();
+            await _ctx.SaveChangesAsync();
 
-                    scope.Complete();
-                    return existingEvent.Adapt<EventDTO>();
-                }
-
-            }
-            catch (TransactionAbortedException ex)
-            {
-                return null;
-
-            }
+            return existingEvent.Adapt<EventDTO>();
         }
 
-        public async Task<EventDTO> GetEventById(Guid EventId)
-        {
-            return await _ctx.Event.Where(e => e.Id == EventId).ProjectToType<EventDTO>().FirstOrDefaultAsync();
-        }
+    }
 
-        public async Task<List<EventDTO>> GetAllEvents()
-        {
-            return await _ctx.Event.Include(e => e.Photos)
+    public async Task<EventDTO> GetEventById(Guid EventId)
+    {
+        return await _ctx.Event
                 .Include(e => e.EventCategories)
                 .ThenInclude(e => e.Category)
-                .ProjectToType<EventDTO>()
-                .ToListAsync();
-        }
+                .Include(e => e.Photos)
+                .Where(e => e.Id == EventId)
+                .Select(e => new EventDTO()
+                {
+                    Id = e.Id,
+                    TeamOneName = e.TeamOneName,
+                    TeamTwoName = e.TeamTwoName,
+                    TeamOneScore = e.TeamOneScore,
+                    TeamTwoScore = e.TeamTwoScore,
+                    CategoryNames = e.EventCategories.Select(s => s.Category.Name).ToList(),
+                    PhotoUrls = e.Photos.Select(p => p.Url).ToList(),
+                    ShortDescription = e.ShortDescription,
+                    Description = e.Description,
+                    Date = e.Date
+                })
+                .FirstOrDefaultAsync();
     }
+
+    public async Task<List<EventDTO>> GetAllEvents()
+    {
+        return await _ctx.Event.Include(e => e.Photos)
+            .Include(e => e.EventCategories)
+            .ThenInclude(e => e.Category)
+            .Select(e => new EventDTO()
+            {
+                Id = e.Id,
+                TeamOneName = e.TeamOneName,
+                TeamTwoName = e.TeamTwoName,
+                TeamOneScore = e.TeamOneScore,
+                TeamTwoScore = e.TeamTwoScore,
+                CategoryNames = e.EventCategories.Select(s => s.Category.Name).ToList(),
+                PhotoUrls = e.Photos.Select(p => p.Url).ToList(),
+                ShortDescription = e.ShortDescription,
+                Description = e.Description,
+                Date = e.Date
+            })
+            .ToListAsync();
+    }
+}
 }

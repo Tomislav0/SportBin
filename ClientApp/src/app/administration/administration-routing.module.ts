@@ -13,12 +13,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
-  {
-    path: 'users',
-    component: UsersComponent,
-    canActivate: [AuthGuard],
-    pathMatch: 'full',
-  },
 ];
 
 @NgModule({
