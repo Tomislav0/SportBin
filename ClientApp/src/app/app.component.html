@@ -3,5 +3,5 @@
   <main class="container">
     <router-outlet></router-outlet>
   </main>
-  <app-footer *ngIf="!isLogin"></app-footer>
+  <app-footer *ngIf="!isLogin && !isAdmin"></app-footer>
 </body>

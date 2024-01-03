@@ -21,6 +21,6 @@ export class AuthService {
   }
 
   public getAllUsers(): Observable<any> {
-    return this.http.get<any>(this.baseUrl + 'admin/list');
+    return this.http.get<any>(this.baseUrl + 'admin/users');
   }
 }

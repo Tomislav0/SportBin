@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { AuthGuard } from './helpers/auth.guard';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,9 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent {
   public isLogin: boolean = true;
-
-  constructor(private router: Router) {
+  public isAdmin = false;
+  constructor(private router: Router, private authGuard: AuthGuard) {
+    this.isAdmin = this.authGuard.isAdmin();
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
         if (event.url === '/admin/login') {

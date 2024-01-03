@@ -15,10 +15,17 @@ namespace SportBin.Controllers
             _adminService = adminService;
         }
 
-        [HttpGet("list")]
+        [HttpGet("users")]
         public async Task<ActionResult<List<UserDTO>>> GetAllUsers()
         {
             var result = await _adminService.GetAllUsers();
+            return Ok(result);
+        }
+
+        [HttpGet("categories")]
+        public async Task<ActionResult<List<CategoryDTO>>> GetAllCategories()
+        {
+            var result = await _adminService.GetAllCategories();
             return Ok(result);
         }
 
