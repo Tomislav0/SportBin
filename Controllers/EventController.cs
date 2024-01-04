@@ -42,5 +42,13 @@ namespace SportBin.Controllers
             var result = await _eventService.CreateEvent(model);
             return Ok(result);
         }
+
+
+        [HttpGet("categoryEvent/{categoryId}")]
+        public async Task<ActionResult<List<EventDTO>>> GetEventsByCategory([FromRoute] Guid categoryId)
+        {
+            var result = await _eventService.GetEventsByCategory(categoryId);
+            return Ok(result);
+        }
     }
 }
