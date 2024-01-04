@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SportBin.Data;
 using SportBin.Models.BM;
 using SportBin.Models.DTO;
@@ -16,6 +17,7 @@ namespace SportBin.Controllers
             _subscriptionService = subscriptionService;
         }
 
+        [Authorize]
         [HttpGet("")]
         public async Task<ActionResult<List<SubscriptionDTO>>> GetAllSubscriptions()
         {
@@ -30,6 +32,7 @@ namespace SportBin.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpDelete("{subscriptionId}")]
         public async Task<ActionResult<bool>> DeleteSubscription([FromRoute] Guid subscriptionId)
         {

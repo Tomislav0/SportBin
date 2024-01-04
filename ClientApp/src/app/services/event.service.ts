@@ -32,4 +32,8 @@ export class EventService {
       httpOptions
     );
   }
+
+  public deleteEvent(eventId: any): Observable<any> {
+    return this.http.delete<any>(this.baseUrl + `event/${eventId}`);
+  }
 }

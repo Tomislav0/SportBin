@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SportBin.Data;
 using SportBin.Models.BM;
 using SportBin.Models.DTO;
@@ -23,6 +24,7 @@ namespace SportBin.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost("")]
         public async Task<ActionResult<CategoryDTO>> AddCategory(CategoryBM model)
         {
@@ -30,6 +32,7 @@ namespace SportBin.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpDelete("{categoryId}")]
         public async Task<ActionResult<bool>> DeleteCategory([FromRoute] Guid categoryId)
         {
