@@ -7,16 +7,10 @@ using SportBin.Models.DTO;
 
 namespace SportBin.Services
 {
-    public class AdminService : BaseService
+    public class CategoryService : BaseService
     {
-        public AdminService(DataContext ctx) : base(ctx)
+        public CategoryService(DataContext ctx) : base(ctx)
         {
-        }
-        public async Task<List<UserDTO>> GetAllUsers()
-        {
-            return await _ctx.Users
-                .ProjectToType<UserDTO>()
-                .ToListAsync();
         }
         public async Task<List<CategoryDTO>> GetAllCategories()
         {
@@ -37,14 +31,6 @@ namespace SportBin.Services
             return newCategory.Adapt<CategoryDTO>();
         }
 
-        public async Task<bool> DeleteUser(string id)
-        {
-
-            await _ctx.Users.Where(x => x.Id == id).ExecuteDeleteAsync();
-
-            return true;
-        }
-
         public async Task<bool> DeleteCategory(Guid id)
         {
 
@@ -52,6 +38,5 @@ namespace SportBin.Services
 
             return true;
         }
-
     }
 }

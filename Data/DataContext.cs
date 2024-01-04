@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SportBin.Models.Definitions;
-using System.Reflection.Emit;
 
 namespace SportBin.Data
 {
@@ -17,6 +16,7 @@ namespace SportBin.Data
         public DbSet<Category> Category { get; set; }
         public DbSet<Event> Event { get; set; }
         public DbSet<EventCategory> EventCategory { get; set; }
+        public DbSet<Subscription> Subscription { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

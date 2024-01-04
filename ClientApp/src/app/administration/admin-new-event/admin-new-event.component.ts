@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ICategoryDTO, IEventDTO } from 'src/app/models';
 import { AzureBlobStorageService } from 'src/app/services/azure-blob-storage.service';
+import { CategoryService } from 'src/app/services/category.service';
 import { EventService } from 'src/app/services/event.service';
 
 @Component({
@@ -31,9 +32,10 @@ export class AdminNewEventComponent {
   constructor(
     public eventsService: EventService,
     private datePipe: DatePipe,
-    private blobService: AzureBlobStorageService
+    private blobService: AzureBlobStorageService,
+    private categoryService: CategoryService
   ) {
-    eventsService.getEventCategories().subscribe((result) => {
+    categoryService.getEventCategories().subscribe((result) => {
       this.availableCategories = result;
     });
   }

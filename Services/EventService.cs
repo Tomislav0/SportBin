@@ -105,6 +105,14 @@ namespace SportBin.Services
                 .ToListAsync();
         }
 
+        public async Task<bool> DeleteEvent(Guid id)
+        {
+
+            await _ctx.Event.Where(x => x.Id == id).ExecuteDeleteAsync();
+
+            return true;
+        }
+
         public async Task<List<EventDTO>> GetEventsByCategory(Guid CategoryId)
         {
             return await _ctx.Event.Where(e => e.EventCategories.Any(ec => ec.CategoryId == CategoryId)).Include(e => e.Photos)

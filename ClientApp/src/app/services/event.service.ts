@@ -33,7 +33,7 @@ export class EventService {
     );
   }
 
-  public getEventCategories(): Observable<ICategoryDTO[]> {
-    return this.http.get<any>(this.baseUrl + 'admin/categories');
+  public deleteEvent(eventId: any): Observable<any> {
+    return this.http.delete<any>(this.baseUrl + `event/${eventId}`);
   }
 }

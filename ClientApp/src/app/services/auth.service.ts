@@ -23,4 +23,8 @@ export class AuthService {
   public getAllUsers(): Observable<any> {
     return this.http.get<any>(this.baseUrl + 'admin/users');
   }
+
+  public deleteAdmin(userId: any): Observable<any> {
+    return this.http.delete<any>(this.baseUrl + `admin/user/${userId}`);
+  }
 }
