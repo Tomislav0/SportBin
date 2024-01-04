@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SportBin.Data;
 using SportBin.Models.DTO;
 using SportBin.Services;
@@ -15,6 +16,7 @@ namespace SportBin.Controllers
             _adminService = adminService;
         }
 
+        [Authorize]
         [HttpGet("users")]
         public async Task<ActionResult<List<UserDTO>>> GetAllUsers()
         {
@@ -22,12 +24,12 @@ namespace SportBin.Controllers
             return Ok(result);
         }
 
-        [HttpGet("categories")]
-        public async Task<ActionResult<List<CategoryDTO>>> GetAllCategories()
+        [Authorize]
+        [HttpDelete("user/{userId}")]
+        public async Task<ActionResult<List<UserDTO>>> DeleteUser([FromRoute] string userId)
         {
-            var result = await _adminService.GetAllCategories();
+            var result = await _adminService.DeleteUser(userId);
             return Ok(result);
         }
-
     }
 }

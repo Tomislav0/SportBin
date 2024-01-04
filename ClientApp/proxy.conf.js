@@ -8,7 +8,7 @@ const target = env.ASPNETCORE_HTTPS_PORT
 
 const PROXY_CONFIG = [
   {
-    context: ["/event", "/account", "/admin"],
+    context: ["/event", "/account", "/admin", "/category", "/subscription"],
     target: target,
     secure: false,
     headers: {

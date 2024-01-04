@@ -42,5 +42,13 @@ namespace SportBin.Controllers
             var result = await _eventService.CreateEvent(model);
             return Ok(result);
         }
+
+        [Authorize]
+        [HttpDelete("{eventId}")]
+        public async Task<ActionResult<bool>> DeleteEvent([FromBody] Guid eventId)
+        {
+            var result = await _eventService.DeleteEvent(eventId);
+            return Ok(result);
+        }
     }
 }

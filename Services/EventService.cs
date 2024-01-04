@@ -104,5 +104,13 @@ namespace SportBin.Services
                 })
                 .ToListAsync();
         }
+
+        public async Task<bool> DeleteEvent(Guid id)
+        {
+
+            await _ctx.Event.Where(x => x.Id == id).ExecuteDeleteAsync();
+
+            return true;
+        }
     }
 }
