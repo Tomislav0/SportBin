@@ -22,12 +22,11 @@ namespace SportBin.Controllers
             return Ok(result);
         }
 
-        [HttpGet("categories")]
-        public async Task<ActionResult<List<CategoryDTO>>> GetAllCategories()
+        [HttpDelete("user/{userId}")]
+        public async Task<ActionResult<List<UserDTO>>> DeleteUser([FromRoute] string userId)
         {
-            var result = await _adminService.GetAllCategories();
+            var result = await _adminService.DeleteUser(userId);
             return Ok(result);
         }
-
     }
 }

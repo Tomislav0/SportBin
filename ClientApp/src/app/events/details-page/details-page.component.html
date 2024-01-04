@@ -17,7 +17,7 @@
 							event.categoryNames.length > 0;
 						else noCategory
 					">
-					<h3 *ngFor="let category; in: event.categoryNames">
+					<h3 *ngFor="let category of event.categoryNames">
 						{{ category }}
 					</h3>
 				</div>

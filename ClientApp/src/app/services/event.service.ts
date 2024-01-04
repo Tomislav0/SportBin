@@ -32,8 +32,4 @@ export class EventService {
       httpOptions
     );
   }
-
-  public getEventCategories(): Observable<ICategoryDTO[]> {
-    return this.http.get<any>(this.baseUrl + 'admin/categories');
-  }
 }
