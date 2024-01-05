@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using SportBin.Data;
 using SportBin.Models.BM;
 using SportBin.Models.DTO;
@@ -21,6 +22,13 @@ namespace SportBin.Controllers
         public async Task<ActionResult<List<CategoryDTO>>> GetAllCategories()
         {
             var result = await _categoryService.GetAllCategories();
+            return Ok(result);
+        }
+
+        [HttpGet("{categoryId}")]
+        public async Task<ActionResult<CategoryDTO>> GetCategoryById([FromRoute] Guid categoryId)
+        {
+            var result = await _categoryService.GetCategoryById(categoryId);
             return Ok(result);
         }
 

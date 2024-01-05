@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { EventDTO } from 'src/app/models';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EventDTO, ICategoryDTO } from 'src/app/models';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-event-card',
@@ -10,8 +11,8 @@ import { EventDTO } from 'src/app/models';
 export class EventCardComponent {
   @Input()
   event!: EventDTO;
-
   showScore: boolean = false;
+  category: ICategoryDTO | undefined;
 
   constructor(public router: Router) {}
 

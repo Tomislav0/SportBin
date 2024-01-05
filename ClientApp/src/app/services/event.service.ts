@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { EventDTO, ICategoryDTO, IEventDTO } from '../models/DTOs/EventDTO';
+import { Observable } from 'rxjs';
+import { EventDTO, IEventDTO } from '../models/DTOs/EventDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -35,5 +35,11 @@ export class EventService {
 
   public deleteEvent(eventId: any): Observable<any> {
     return this.http.delete<any>(this.baseUrl + `event/${eventId}`);
+  }
+
+  public getEventsByCategory(categoryId: string): Observable<EventDTO[]> {
+    return this.http.get<EventDTO[]>(
+      this.baseUrl + `event/categoryEvents/${categoryId}`
+    );
   }
 }

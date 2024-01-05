@@ -76,10 +76,10 @@
         "
       >
         <p
-          *ngFor="let category of event.categoryNames"
+          *ngIf="event && event.categoryNames && event.categoryNames.length > 0"
           class="teams-footer__category"
         >
-          {{ category }}
+          {{ event.categoryNames[0] }}
         </p>
       </div>
       <ng-template #noCategory><p>No Category</p></ng-template>
