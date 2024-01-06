@@ -24,7 +24,6 @@ export class HeaderComponent {
     this.authService.authorizedSubject.subscribe((result) => {
       this.isAuthorized = result;
     });
-
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
         if (event.url === '/admin/login') {
