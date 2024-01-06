@@ -1,0 +1,26 @@
+.categoryPage-title {
+  color: var(--Gray-900, #101828);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  margin-bottom: 30px;
+}
+
+.category-name-title {
+  color: var(--Gray-800, #343a40);
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+}
+
+.selected-events,
+.all-events {
+  margin-bottom: 1.875rem;
+}
+
+.container {
+  max-width: 70rem;
+}

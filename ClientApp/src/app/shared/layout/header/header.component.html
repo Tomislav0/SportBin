@@ -44,10 +44,15 @@
               class="dropdown-menu"
               aria-labelledby="navbarDropdown"
             >
-              <a ngbDropdownItem class="dropdown-item" href="#">Nogomet</a>
-              <a ngbDropdownItem class="dropdown-item" href="#">Tenis</a>
-              <a ngbDropdownItem class="dropdown-item" href="#">Rukomet</a>
-              <a ngbDropdownItem class="dropdown-item" href="#">Košarka</a>
+              <div *ngFor="let category of categories">
+                <a
+                  ngbDropdownItem
+                  class="dropdown-item"
+                  (click)="onCategoryClicked(category)"
+                >
+                  {{ category.name }}
+                </a>
+              </div>
             </div>
           </li>
         </ul>

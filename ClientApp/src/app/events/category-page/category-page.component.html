@@ -1,0 +1,31 @@
+<h1 class="category-name-title" *ngIf="category && category.name">
+  {{ category.name }}
+</h1>
+
+<div class="selected-events">
+  <h1 class="categoryPage-title">Istaknuti događaji</h1>
+  <p *ngIf="!categoryEvents?.length"><em>Loading...</em></p>
+  <div
+    class="d-flex align-items-center justify-content-center flex-row-reverse gap-3"
+  >
+    <div *ngFor="let event of categoryEvents; let i = index">
+      <div *ngIf="i >= categoryEvents.length - 3">
+        <app-event-card [event]="event"></app-event-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="all-events">
+  <h1 class="categoryPage-title" *ngIf="category && category.name">
+    {{ category.name }} - događaji
+  </h1>
+  <p *ngIf="!categoryEvents?.length"><em>Loading...</em></p>
+  <div class="container">
+    <div class="row gy-2">
+      <div class="col-4" *ngFor="let event of categoryEvents">
+        <app-event-card [event]="event"></app-event-card>
+      </div>
+    </div>
+  </div>
+</div>

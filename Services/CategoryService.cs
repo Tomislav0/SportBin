@@ -19,6 +19,15 @@ namespace SportBin.Services
                 .ToListAsync();
         }
 
+        public async Task<CategoryDTO> GetCategoryById(Guid categoryId)
+        {
+            return await _ctx.Category.Where(e => e.Id == categoryId).Select(e => new CategoryDTO()
+            {
+                Id = e.Id,
+                Name = e.Name
+            }).FirstOrDefaultAsync();
+        }
+
         public async Task<CategoryDTO> AddCategory(CategoryBM model)
         {
 

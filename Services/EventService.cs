@@ -112,5 +112,24 @@ namespace SportBin.Services
 
             return true;
         }
+
+        public async Task<List<EventDTO>> GetEventsByCategory(Guid CategoryId)
+        {
+            return await _ctx.Event.Where(e => e.EventCategories.Any(ec => ec.CategoryId == CategoryId)).Include(e => e.Photos)
+                .Include(e => e.EventCategories)
+                .ThenInclude(e => e.Category).Select(e => new EventDTO()
+            {
+                Id = e.Id,
+                TeamOneName = e.TeamOneName,
+                TeamTwoName = e.TeamTwoName,
+                TeamOneScore = e.TeamOneScore,
+                TeamTwoScore = e.TeamTwoScore,
+                CategoryNames = e.EventCategories.Select(s => s.Category.Name).ToList(),
+                PhotoUrls = e.Photos.Select(p => p.Url).ToList(),
+                ShortDescription = e.ShortDescription,
+                Description = e.Description,
+                Date = e.Date
+            }).ToListAsync();
+        }
     }
 }
