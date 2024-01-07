@@ -1,52 +1,60 @@
-<div class="container">
-	<div class="row">
-		<div class="col-md-2 bg-red"></div>
-		<div class="col-md-8" *ngIf="event">
-			<div class="d-flex flex-row justify-content-between align-items-center">
-				<div class="d-flex flex-row align-items-center">
-					<h1 class="me-3">{{ getTitleOfMatch() }}</h1>
-					<button class="btn btn-link" *ngIf="isAdmin">Uredi</button>
-					<button class="btn btn-link" *ngIf="isAdmin">Obriši</button>
-				</div>
-				<h1>{{ getScoreOfMatch() }}</h1>
+<div class="row">
+	<div class="col-md-2 bg bg-red"></div>
+	<div class="col-md-8" *ngIf="event">
+		<div class="d-flex flex-row justify-content-between align-items-center">
+			<div class="d-flex flex-row align-items-center">
+				<h1 class="me-3">{{ getTitleOfMatch() }}</h1>
+				<button class="btn btn-link" *ngIf="isAdmin">Uredi</button>
+				<button class="btn btn-link" *ngIf="isAdmin">Obriši</button>
 			</div>
-			<div>
-				<div *ngIf="
-						event &&
-							event.categoryNames &&
-							event.categoryNames.length > 0;
-						else noCategory
-					">
-					<h3 *ngFor="let category of event.categoryNames">
-						{{ category }}
-					</h3>
-				</div>
-				<ng-template #noCategory>
-					<h3>No Category</h3>
-				</ng-template>
+			<h1>{{ getScoreOfMatch() }}</h1>
+		</div>
+		<div>
+			<div
+				*ngIf="
+					event &&
+						event.categoryNames &&
+						event.categoryNames.length > 0;
+					else noCategory
+				"
+			>
+				<h3 *ngFor="let category of event.categoryNames">
+					{{ category }}
+				</h3>
 			</div>
-			<div class="d-flex justify-content-center w-75" *ngIf="event && event.description">
-				{{ event.description }}
-			</div>
-			<div class="d-flex justify-content-end" *ngIf="event && event.date">
-				{{ getDateOfMatch() }}
-			</div>
-			<hr class="mt-1" />
-			<div>
-				<ng-container *ngIf="
-					event && event.photoUrls && event.photoUrls.length > 0;
-					else noPhotos
-					">
-					<div *ngFor="let pictureUrl of event.photoUrls">
-
-						<img style="max-width: 500px;" class="mb-2" [src]="pictureUrl">
-					</div>
-				</ng-container>
-			</div>
-			<ng-template #noPhotos>
-				<p>No images</p>
+			<ng-template #noCategory>
+				<h3>No Category</h3>
 			</ng-template>
 		</div>
-		<div class="col-md-2 bg-blue"></div>
+		<div
+			class="d-flex justify-content-center w-75"
+			*ngIf="event && event.description"
+		>
+			{{ event.description }}
+		</div>
+		<div class="d-flex justify-content-end" *ngIf="event && event.date">
+			{{ getDateOfMatch() }}
+		</div>
+		<hr class="mt-1" />
+		<div>
+			<ng-container
+				*ngIf="
+					event && event.photoUrls && event.photoUrls.length > 0;
+					else noPhotos
+				"
+			>
+				<div *ngFor="let pictureUrl of event.photoUrls">
+					<img
+						style="max-width: 500px"
+						class="mb-2"
+						[src]="pictureUrl"
+					/>
+				</div>
+			</ng-container>
+		</div>
+		<ng-template #noPhotos>
+			<p>No images</p>
+		</ng-template>
 	</div>
+	<div class="col-md-2 bg bg-blue"></div>
 </div>
