@@ -1,7 +1,7 @@
-<body>
-  <app-header></app-header>
-  <main class="container">
-    <router-outlet></router-outlet>
-  </main>
-  <app-footer *ngIf="!isLogin && !isAdmin"></app-footer>
+<body class="d-flex flex-column">
+	<app-header></app-header>
+	<main class="container">
+		<router-outlet></router-outlet>
+	</main>
+	<app-footer *ngIf="!isLogin && !isAdmin"></app-footer>
 </body>
