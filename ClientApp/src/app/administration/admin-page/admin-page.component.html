@@ -1,10 +1,22 @@
-<admin-header (tabChangeDetected)="onTabChange($event)"> </admin-header>
+<admin-header
+	[currentTab]="currentTab"
+	[isEditEvent]="isEditEvent"
+	(tabChangeDetected)="onTabChange($event)"
+>
+</admin-header>
 <div *ngIf="currentTab === 'tab1'">
-  <!-- Ovdje komponenta za uredivanje evenata -->
+	<!-- Ovdje komponenta za uredivanje evenata -->
+	<admin-event-list
+		(editEventEmitter)="onEditClicked($event)"
+	></admin-event-list>
 </div>
 <div *ngIf="currentTab === 'tab2'">
-  <admin-new-event></admin-new-event>
+	<!-- Ovdje komponenta za unos novog eventa -->
+	<admin-new-event
+		[isEditEvent]="isEditEvent"
+		[editEventId]="editEventId"
+	></admin-new-event>
 </div>
 <div *ngIf="currentTab === 'tab3'">
-  <app-configuration></app-configuration>
+	<app-configuration></app-configuration>
 </div>

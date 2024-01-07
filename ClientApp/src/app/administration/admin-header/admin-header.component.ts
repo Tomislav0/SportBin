@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Output, Input } from "@angular/core";
 
 @Component({
 	selector: "admin-header",
@@ -7,12 +7,17 @@ import { Component, EventEmitter, Output } from "@angular/core";
 })
 export class AdminHeaderComponent {
 	@Output() tabChangeDetected = new EventEmitter<AdminTabName>();
-
-	public currentTab: AdminTabName = AdminTabName.NewEventTab;
+	@Input() public isEditEvent: boolean = false;
+	@Input() currentTab: AdminTabName = AdminTabName.EventsTab;
 
 	public changeTab(tab: string) {
 		this.currentTab = tab;
+		this.isEditEvent = false;
 		this.tabChangeDetected.emit(tab);
+	}
+
+	public getTabTitle() {
+		return this.isEditEvent ? "Editiranje Eventa" : "Novi Event";
 	}
 }
 
