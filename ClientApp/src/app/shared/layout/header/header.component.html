@@ -22,10 +22,10 @@
       >
         <ul class="navbar-nav flex-grow">
           <li class="nav-item pointer" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-light">Istaknuto</a>
+            <a class="nav-link text-light" href="#selected-events">Istaknuto</a>
           </li>
           <li class="nav-item pointer" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-light">Događaji</a>
+            <a class="nav-link text-light" href="#all-events">Događaji</a>
           </li>
           <li ngbDropdown class="nav-item pointer dropdown">
             <a
@@ -68,20 +68,7 @@
           <li
             class="nav-item pointer me-2"
             [routerLinkActive]="['link-active']"
-          >
-            <form class="form-inline my-2 my-lg-0 d-inline-flex gap-2">
-              <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <i
-                class="bi bi-search align-self-center"
-                style="color: wheat"
-              ></i>
-            </form>
-          </li>
+          ></li>
           <li *ngIf="!isAuthorized" class="nav-item pointer ms-2">
             <a class="nav-link text-light" routerLink="admin/login">Login</a>
           </li>

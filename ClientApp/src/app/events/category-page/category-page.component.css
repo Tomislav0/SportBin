@@ -16,11 +16,30 @@
   text-align: center;
 }
 
-.selected-events,
-.all-events {
+.selected-events {
   margin-bottom: 1.875rem;
 }
 
-.container {
+.grid-container {
   max-width: 70rem;
+}
+
+.all-events {
+  margin-bottom: 15rem;
+}
+
+.selected-event {
+  flex-basis: 100%;
+}
+
+.selected-events-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

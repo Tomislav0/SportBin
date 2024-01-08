@@ -10,6 +10,8 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class HomeComponent {
   public events: EventDTO[] = [];
+  searchText: string = '';
+
   constructor(public eventService: EventService, public router: Router) {
     this.eventService.getAllEvents().subscribe(
       (result) => {
@@ -17,5 +19,9 @@ export class HomeComponent {
       },
       (error) => console.error(error)
     );
+  }
+
+  onSearchTextEntered(searchValue: string) {
+    this.searchText = searchValue;
   }
 }
