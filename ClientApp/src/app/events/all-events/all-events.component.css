@@ -1,0 +1,22 @@
+.title {
+  color: var(--Gray-900, #101828);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  margin-bottom: 30px;
+}
+
+.grid-container {
+  max-width: 70rem;
+}
+
+.all-events {
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { ICategoryDTO, IEventDTO } from 'src/app/models';
 import { AzureBlobStorageService } from 'src/app/services/azure-blob-storage.service';
 import { CategoryService } from 'src/app/services/category.service';

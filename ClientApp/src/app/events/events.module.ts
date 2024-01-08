@@ -7,6 +7,8 @@ import { EventCardComponent } from './event-card/event-card.component';
 import { CategoryPageComponent } from './category-page/category-page.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
+import { SelectedEventsComponent } from './selected-events/selected-events.component';
+import { AllEventsComponent } from './all-events/all-events.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { FormsModule } from '@angular/forms';
     EventCardComponent,
     CategoryPageComponent,
     SearchComponent,
+    SelectedEventsComponent,
+    AllEventsComponent,
   ],
   imports: [CommonModule, EventsRoutingModule, FormsModule],
 })

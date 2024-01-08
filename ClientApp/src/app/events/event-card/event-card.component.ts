@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { EventDTO, ICategoryDTO } from 'src/app/models';
-import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-event-card',

@@ -1,0 +1,21 @@
+<div class="all-events" id="all-events">
+  <h1 class="title">Svi događaji</h1>
+  <div class="grid">
+    <p *ngIf="!events?.length"><em>Loading...</em></p>
+    <div class="grid-container">
+      <div class="row gy-4">
+        <div class="col-4" *ngFor="let event of events">
+          <div
+            *ngIf="
+              searchText === '' ||
+              event.teamOneName.toLowerCase().includes(searchText) ||
+              event.teamTwoName.toLowerCase().includes(searchText)
+            "
+          >
+            <app-event-card [event]="event"></app-event-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventDTO, ICategoryDTO } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
@@ -28,6 +28,7 @@ export class CategoryPageComponent implements OnInit {
 
   public categoryEvents: EventDTO[] = [];
   public category: ICategoryDTO | undefined;
+  searchText: string = '';
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -39,5 +40,9 @@ export class CategoryPageComponent implements OnInit {
         (error) => console.error(error)
       );
     });
+  }
+
+  onSearchTextEntered(searchValue: string) {
+    this.searchText = searchValue;
   }
 }
