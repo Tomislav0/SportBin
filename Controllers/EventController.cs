@@ -45,7 +45,7 @@ namespace SportBin.Controllers
 
         [Authorize]
         [HttpDelete("{eventId}")]
-        public async Task<ActionResult<bool>> DeleteEvent([FromBody] Guid eventId)
+        public async Task<ActionResult<bool>> DeleteEvent([FromRoute] Guid eventId)
         {
             var result = await _eventService.DeleteEvent(eventId);
             return Ok(result);

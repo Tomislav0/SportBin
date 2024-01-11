@@ -14,7 +14,7 @@
 		[ngClass]="{ active: currentTab === 'tab2' }"
 		(click)="changeTab('tab2')"
 	>
-		Novi Dogadaj
+		{{ getTabTitle() }}
 	</label>
 	<label
 		class="btn btn-secondary"

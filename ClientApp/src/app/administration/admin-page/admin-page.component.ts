@@ -7,8 +7,16 @@ import { AdminTabName } from "../admin-header";
 	styleUrls: ["./admin-page.component.css"],
 })
 export class AdminPageComponent {
-	public currentTab: AdminTabName = AdminTabName.NewEventTab;
+	public currentTab: AdminTabName = AdminTabName.EventsTab;
+	public isEditEvent: boolean = false;
+	public editEventId: string = "";
 	public onTabChange(tab: AdminTabName) {
 		this.currentTab = tab;
+	}
+
+	public onEditClicked(eventId: string) {
+		this.isEditEvent = true;
+		this.editEventId = eventId;
+		this.onTabChange(AdminTabName.NewEventTab);
 	}
 }

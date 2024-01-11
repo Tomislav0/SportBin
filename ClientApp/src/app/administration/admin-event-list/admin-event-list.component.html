@@ -1,0 +1,14 @@
+<div class="all-events admin-events">
+	<p *ngIf="!events?.length"><em>Loading...</em></p>
+	<div class="container">
+		<div class="row gy-2">
+			<div class="col-4" *ngFor="let event of events">
+				<app-event-card
+					[event]="event"
+					(onEditEventClicked)="editEventClick($event)"
+					(onDeleteEventClicked)="deleteEventClick($event)"
+				></app-event-card>
+			</div>
+		</div>
+	</div>
+</div>

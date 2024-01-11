@@ -1,5 +1,5 @@
 <body class="d-flex flex-column">
-	<app-header></app-header>
+	<app-header (adminLogoutClicked)="changeAdminStatus($event)"></app-header>
 	<main class="container">
 		<router-outlet></router-outlet>
 	</main>
