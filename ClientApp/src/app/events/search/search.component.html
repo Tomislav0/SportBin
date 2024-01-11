@@ -1,8 +1,9 @@
 <div class="search-container">
-  <span>Pretraži: </span>
-  <input
-    type="text"
-    [(ngModel)]="enteredSearchValue"
-    (input)="onSearchTextChanged()"
-  />
+	<label>Pretraži: </label>
+	<input
+		class="form-control mr-sm-2 w-25"
+		type="text"
+		[(ngModel)]="enteredSearchValue"
+		(input)="onSearchTextChanged()"
+	/>
 </div>

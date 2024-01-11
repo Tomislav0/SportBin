@@ -1,86 +1,104 @@
 <header>
-  <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3"
-  >
-    <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">SportBin</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+	<nav
+		class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3"
+	>
+		<div class="container">
+			<a class="navbar-brand" [routerLink]="['/']">SportBin</a>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-      <div
-        class="navbar-collapse collapse d-sm-inline-flex justify-content-between"
-        [ngClass]="{ show: isExpanded }"
-      >
-        <ul class="navbar-nav flex-grow">
-          <li class="nav-item pointer" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-light" href="#selected-events">Istaknuto</a>
-          </li>
-          <li class="nav-item pointer" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-light" href="#all-events">Događaji</a>
-          </li>
-          <li ngbDropdown class="nav-item pointer dropdown">
-            <a
-              ngbDropdownToggle
-              class="nav-link dropdown-toggle"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Kategorije
-            </a>
-            <div
-              ngbDropdownMenu
-              class="dropdown-menu"
-              aria-labelledby="navbarDropdown"
-            >
-              <div *ngFor="let category of categories">
-                <a
-                  ngbDropdownItem
-                  class="dropdown-item"
-                  (click)="onCategoryClicked(category)"
-                >
-                  {{ category.name }}
-                </a>
-              </div>
-            </div>
-          </li>
-        </ul>
+			<div
+				class="navbar-collapse collapse d-sm-inline-flex justify-content-between"
+				[ngClass]="{ show: isExpanded }"
+			>
+				<ul class="navbar-nav flex-grow">
+					<li
+						class="nav-item pointer"
+						[routerLinkActive]="['link-active']"
+						*ngIf="!isAdminPage()"
+					>
+						<a class="nav-link text-light" href="#selected-events"
+							>Istaknuto</a
+						>
+					</li>
+					<li
+						class="nav-item pointer"
+						[routerLinkActive]="['link-active']"
+						*ngIf="!isAdminPage()"
+					>
+						<a class="nav-link text-light" href="#all-events"
+							>Događaji</a
+						>
+					</li>
+					<li
+						ngbDropdown
+						class="nav-item pointer dropdown"
+						*ngIf="!isAdminPage()"
+					>
+						<a
+							ngbDropdownToggle
+							class="nav-link dropdown-toggle"
+							id="navbarDropdown"
+							role="button"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							Kategorije
+						</a>
+						<div
+							ngbDropdownMenu
+							class="dropdown-menu"
+							aria-labelledby="navbarDropdown"
+						>
+							<div *ngFor="let category of categories">
+								<a
+									ngbDropdownItem
+									class="dropdown-item"
+									(click)="onCategoryClicked(category)"
+								>
+									{{ category.name }}
+								</a>
+							</div>
+						</div>
+					</li>
+				</ul>
 
-        <ul class="navbar-nav flex-grow" *ngIf="!isLoginPage">
-          <li
-            *ngIf="isAuthorized"
-            class="nav-item pointer me-2"
-            routerLink="admin"
-          >
-            <a class="nav-link text-light">Admin</a>
-          </li>
-          <li
-            class="nav-item pointer me-2"
-            [routerLinkActive]="['link-active']"
-          ></li>
-          <li *ngIf="!isAuthorized" class="nav-item pointer ms-2">
-            <a class="nav-link text-light" routerLink="admin/login">Login</a>
-          </li>
-          <li
-            *ngIf="isAuthorized"
-            class="nav-item pointer ms-2"
-            (click)="logout()"
-          >
-            <a class="nav-link text-light">Log out</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+				<ul class="navbar-nav flex-grow" *ngIf="!isLoginPage">
+					<li
+						*ngIf="isAuthorized"
+						class="nav-item pointer me-2"
+						routerLink="admin"
+					>
+						<a class="nav-link text-light">Admin</a>
+					</li>
+					<li
+						class="nav-item pointer me-2"
+						[routerLinkActive]="['link-active']"
+					></li>
+					<li *ngIf="!isAuthorized" class="nav-item pointer ms-2">
+						<a class="nav-link text-light" routerLink="admin/login"
+							>Login</a
+						>
+					</li>
+					<li
+						*ngIf="isAuthorized"
+						class="nav-item pointer ms-2"
+						(click)="logout()"
+					>
+						<a class="nav-link text-light">Log out</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </header>
