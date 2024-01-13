@@ -15,7 +15,7 @@ Do you need all your sport event results in one place? SportBin provides insight
 
 ## How to start the application
 
-To visit the application in the browser, visit [https://sportbinserver.azurewebsites.net/](https://sportbinserver.azurewebsites.net/)
+To visit the application in the browser, go to [https://sportbinserver.azurewebsites.net/](https://sportbinserver.azurewebsites.net/)
 
 To start the application locally, follow these instructions:
 
