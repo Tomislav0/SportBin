@@ -15,13 +15,23 @@ Do you need all your sport event results in one place? SportBin provides insight
 
 ## How to start the application
 
+### Visit in the browser
+
 To visit the application in the browser, go to [https://sportbinserver.azurewebsites.net/](https://sportbinserver.azurewebsites.net/)
+
+### Start locally
 
 To start the application locally, follow these instructions:
 
-1. Clone the project
-2. Open the SportBin.snl file
-3. In Visual Studio, click on the green start button labeled 'SportBin'
+1. Download and install node.js from [https://nodejs.org/en](https://nodejs.org/en)
+2. Clone the project
+3. In the terminal, navigate to ..\SportBin\ClientApp
+4. In the terminal, type the following command
+   ```sh
+   npm i
+   ```
+5. Open the SportBin.snl file
+6. In Visual Studio, click on the green start button labeled 'SportBin'
    ![Alt text](app-start.png)
 
 ## How to log in
