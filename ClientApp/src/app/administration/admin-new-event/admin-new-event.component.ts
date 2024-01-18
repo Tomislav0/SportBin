@@ -88,14 +88,25 @@ export class AdminNewEventComponent implements OnInit {
 
 	public saveEntry() {
 		if (this.validateEntries()) {
-			this.eventsService.postEvent(this.newEvent).subscribe(
-				(response) => {
-					alert("Događaj uspješno dodan");
-				},
-				(error) => {
-					console.error(error);
-				}
-			);
+			if (this.newEvent.id) {
+				this.eventsService.putEvent(this.newEvent).subscribe(
+					(response) => {
+						alert("Događaj uspješno dodan");
+					},
+					(error) => {
+						console.error(error);
+					}
+				);
+			} else {
+				this.eventsService.postEvent(this.newEvent).subscribe(
+					(response) => {
+						alert("Događaj uspješno izmijenjen");
+					},
+					(error) => {
+						console.error(error);
+					}
+				);
+			}
 		}
 	}
 
