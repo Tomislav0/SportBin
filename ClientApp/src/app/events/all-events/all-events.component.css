@@ -28,3 +28,7 @@
     flex-direction: row;
   }
 }
+
+.col-lg-4 {
+  flex: 1 0 auto !important;
+}

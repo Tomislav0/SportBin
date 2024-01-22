@@ -1,8 +1,5 @@
 <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 
-<app-selected-events
-  [events]="events"
-  [searchText]="searchText"
-></app-selected-events>
+<app-selected-events [events]="filteredEvents"></app-selected-events>
 
-<app-all-events [events]="events" [searchText]="searchText"></app-all-events>
+<app-all-events [events]="filteredEvents"></app-all-events>

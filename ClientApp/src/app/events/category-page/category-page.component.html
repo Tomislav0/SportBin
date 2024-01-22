@@ -1,13 +1,9 @@
 <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 
 <h1 class="category-name-title" *ngIf="category && category.name">
-  {{ category.name }}
+	{{ category.name }}
 </h1>
 
-<app-selected-events
-  [events]="categoryEvents"
-  [searchText]="searchText"
-></app-selected-events>
+<app-selected-events [events]="filteredCategoryEvents"></app-selected-events>
 
-<app-all-events [events]="categoryEvents" [searchText]="searchText">
-</app-all-events>
+<app-all-events [events]="filteredCategoryEvents"> </app-all-events>

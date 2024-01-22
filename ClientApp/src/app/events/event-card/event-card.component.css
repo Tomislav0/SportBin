@@ -44,11 +44,12 @@
 
 .card {
   max-width: 25rem;
-  min-width: 20rem;
+  min-width: 25rem;
 }
 
 .card img {
   cursor: pointer;
+  min-height: 200px;
   max-height: 200px;
 }
 
